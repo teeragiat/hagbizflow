@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAGBIZFLOW - LOGIN</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="relative flex flex-col bg-alternative h-screen">  
+        <div class="flex flex-1 h-full">
+            <!-- ✅ Main Section (Adds Only Right Border) -->
+            <main class="flex flex-col items-center flex-1 flex-shrink-0 px-5 pt-16 pb-8 border-r shadow-lg bg-studio border-default">
+                <div class="flex-1 flex flex-col justify-center sm-max-w login-form">
+                    <div class="mb-10">
+                        <h1 class="mt-8 mb-2 text-2to3xl ">Welcome back</h1>
+                        <h2 class="text-sm text-lighter">Sign in to your account</h2>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                    <input type="email" id="loginEmail" placeholder="อีเมลหรือเบอร์โทรศัพท์" autocomplete="email">
+                    <input type="password" id="loginPassword" placeholder="รหัสผ่าน" autocomplete="current-password">
+                    <button id="loginBtn">เข้าสู่ระบบ</button>
+                    <button id="logoutBtn" style="display: none;">ออกจากระบบ</button>  
+                    <button id="themeToggle">Toggle Theme</button>
+                </div>
+                </div>
+                <div class="sm-text-center">
+                    <p class="text-xs text-lighter sm-mx-auto sm-max-w">By continuing, you agree to Supabase's 
+                        <a class="underline text-lighter-hover" href="https://supabase.com/terms">Terms of Service</a> and Privacy Policy , and to receive periodic emails with updates.</div>
+                    </p>
+                </main>
+                <aside class="flex flex-col items-center justify-center flex-1 flex-shrink hidden basis-1-4 xl-flex">
+                    <div class="relative flex flex-col gap-6">
+                        <div class="class="absolute select-none -top-12 -left-11></div>
+                        <div class="z-10 max-w-lg text-3xl">Contributing to open-source projects and seeing merged PRs gives enormous happiness! Special thanks to @supabase, for giving this opportunity by staying open-source and being junior-friendly✌🏼</div>
+                    </div>
+                </aside>
+            </div> 
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const themeToggleButton = document.getElementById("themeToggle");
+                
+                function updateTheme(theme) {
+                    document.documentElement.setAttribute("data-theme", theme);
+                    document.documentElement.style.colorScheme = theme; // Fix browser UI (scrollbars, inputs, etc.)
+                    localStorage.setItem("theme", theme);
+                }
+                
+                function toggleTheme() {
+                    const currentTheme = document.documentElement.getAttribute("data-theme");
+                    const newTheme = currentTheme === "light" ? "dark" : "light";
+                    updateTheme(newTheme);
+                }
+                
+                // Detect & Apply Saved Theme or System Preference
+                const savedTheme = localStorage.getItem("theme");
+                if (savedTheme) {
+                    updateTheme(savedTheme);
+                } else {
+                    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    updateTheme(prefersDark ? "dark" : "light");
+                }
+                
+                themeToggleButton.addEventListener("click", toggleTheme);
+            });
+            
+            
+        </script>
+        <script type="module" src="../shared/auth.js"></script>
+        <script type="module" src="../shared/supabase.js"></script>
+    </body>
+    </html>
+    
